@@ -3,6 +3,7 @@ include(${PROJECT_SOURCE_DIR}/third_party/spdlog.cmake)
 include(${PROJECT_SOURCE_DIR}/third_party/glfw.cmake)
 include(${PROJECT_SOURCE_DIR}/third_party/glm.cmake)
 include(${PROJECT_SOURCE_DIR}/third_party/yaml_cpp.cmake)
+include(${PROJECT_SOURCE_DIR}/third_party/itk.cmake)
 
 if (WIN32)
 add_definitions(-DRE_WINDOWS)
@@ -37,4 +38,5 @@ target_link_libraries(rengine
     glm
     yaml-cpp
     eigen
+    itk
     )
