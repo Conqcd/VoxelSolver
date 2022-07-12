@@ -10,6 +10,8 @@ add_definitions(-DRE_ENABLE_ASSERT)
 #         "${bin_dir}/$<CONFIGURATION>")
 # endif()
 
+find_package(ITK REQUIRED)
+
 include_directories(../TinyOBJLoader)
 include_directories(../Glad/include)
 include_directories(../rengine-src)
@@ -17,6 +19,11 @@ include_directories(../Imgui)
 include_directories(../ImGuizmo)
 include_directories(../Stb)
 include_directories(../Entt)
+
+include_directories(${ITK_INCLUDE_DIRS})
+
+message(${ITK_INCLUDE_DIRS})
+
 add_executable(VoxerSolver
     main.cpp
     EditorLayer.cpp
@@ -33,4 +40,5 @@ target_link_libraries(VoxerSolver
     imgui
     imguizmo
     yaml-cpp
+    ${ITK_LIBRARIES}
     )

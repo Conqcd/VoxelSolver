@@ -1,12 +1,19 @@
 #include "repch.hpp"
-#include "RawReader.hpp"
+#include "OthersReader.hpp"
 #include <cassert>
+
+#include "itkConnectedComponentImageFilter.h"
+#include <itkRescaleIntensityImageFilter.h>
+#include "itkImage.h"
+#include "itkImageFileReader.h"
+#include "itkImageFileWriter.h"
+#include "itkImageRegionIterator.h"
+#include "itkLabelShapeKeepNObjectsImageFilter.h"
 
 namespace Rengin
 {
 
-
-RawReader::RawReader(const std::string &filepath) {
+OthersReader::OthersReader(const std::string &filepath) {
     const char *name_rule = "raw data should be named as `name_x_y_z_datatype`, "
                             "for example: isabel_500_500_100_uint8";
     auto filename = get_file_name(filepath);
@@ -43,7 +50,8 @@ RawReader::RawReader(const std::string &filepath) {
     }
 }
 
-auto RawReader::load() -> std::vector<float>& {
+auto OthersReader::OthersReader(const std::string &filepath) {
+::load() -> std::vector<float>& {
     if (value_type == RawValueType::UINT8) {
         std::vector<uint8_t> buffer;
         m_buffer.reserve(Count());
